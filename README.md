@@ -22,14 +22,11 @@
    # SPDX-License-Identifier: Apache-2.0
    -->
 
-Caravel User Project
+ASIC Key Value Store
 ====================
 
-|License| |User CI| |Caravel Build|
-
 Overview
-========
-
+-----------------
 This repo contains a key value store that utilizes the
 `caravel <https://github.com/efabless/caravel.git>`__ chip user space.
 
@@ -39,4 +36,5 @@ https://github.com/efabless/caravel_user_project
 
 for MPW-3
 
-More information on how to build and use it is in the caravel_user_project repo
+More info on how to build and use this is in the caravel_user_project repo.
+
