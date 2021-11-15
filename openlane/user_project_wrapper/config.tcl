@@ -16,9 +16,6 @@
 # Base Configurations. Don't Touch
 # section begin
 
-set ::env(PDK) "sky130A"
-set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
-
 # YOU ARE NOT ALLOWED TO CHANGE ANY VARIABLES DEFINED IN THE FIXED WRAPPER CFGS 
 source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl
 
@@ -27,7 +24,7 @@ source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_
 
 set script_dir [file dirname [file normalize [info script]]]
 
-set ::env(DESIGN_NAME) user_project_wrapper
+set ::env(DESIGN_NAME) both
 #section end
 
 # User Configurations
@@ -35,7 +32,9 @@ set ::env(DESIGN_NAME) user_project_wrapper
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_project_wrapper.v"
+	$script_dir/../../verilog/rtl/src/both.v \
+	$script_dir/../../verilog/rtl/src/keyvalue_3.v \
+	$script_dir/../../verilog/rtl/src/keyvalue_4.v"
 
 ## Clock configurations
 set ::env(CLOCK_PORT) "user_clock2"
@@ -54,13 +53,15 @@ set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_proj_example.v"
+	$script_dir/../../verilog/rtl/src/both.v \
+        $script_dir/../../verilog/rtl/src/keyvalue_3.v \
+        $script_dir/../../verilog/rtl/src/keyvalue_4.v"
 
 set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/user_proj_example.lef"
+	$script_dir/../../lef/both.lef"
 
 set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/user_proj_example.gds"
+	$script_dir/../../gds/both.gds"
 
 set ::env(GLB_RT_MAXLAYER) 5
 
