@@ -82,7 +82,22 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-user_proj_example mprj (
+   // define which io pins are input and outputs:
+   // These should really be in the module "both"
+
+   // inputs
+   assign io_oeb[35] = 'b1;
+   assign io_oeb[10] = 'b1;
+   assign io_oeb[11] = 'b1;
+   assign io_oeb[19] = 'b1;
+   assign io_oeb[27] = 'b1;
+   assign io_oeb[18:12] = 'b1;
+   assign io_oeb[26:20] = 'b1;
+   // outputs
+   assign io_oeb[8] = 'b0;
+   assign io_oeb[34:28] = 'b0;
+   
+both both(
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
@@ -90,34 +105,23 @@ user_proj_example mprj (
 
     .wb_clk_i(wb_clk_i),
     .wb_rst_i(wb_rst_i),
-
-    // MGMT SoC Wishbone Slave
-
-    .wbs_cyc_i(wbs_cyc_i),
-    .wbs_stb_i(wbs_stb_i),
-    .wbs_we_i(wbs_we_i),
-    .wbs_sel_i(wbs_sel_i),
-    .wbs_adr_i(wbs_adr_i),
-    .wbs_dat_i(wbs_dat_i),
-    .wbs_ack_o(wbs_ack_o),
-    .wbs_dat_o(wbs_dat_o),
-
-    // Logic Analyzer
-
-    .la_data_in(la_data_in),
-    .la_data_out(la_data_out),
-    .la_oenb (la_oenb),
-
-    // IO Pads
-
-    .io_in (io_in),
-    .io_out(io_out),
-    .io_oeb(io_oeb),
-
-    // IRQ
-    .irq(user_irq)
-);
-
+	  .wbs_cyc_i(wbs_cyc_i),
+	  .wbs_we_i(wbs_we_i),
+	  .wbs_sel_i(wbs_sel_i),
+	  .wbs_dat_i(wbs_dat_i),
+	  .wbs_adr_i(wbs_adr_i),
+	  .wbs_ack_o(wbs_ack_o),
+	  .wbs_dat_o(wbs_dat_o),
+	  .la1_data_in(la_data_in),
+	  .la1_data_out(la_data_out),
+	  .la1_oenb(la_oenb),
+	  .io_in(io_in),
+	  .io_out(io_out),
+//	  .io_oeb(io_oeb),
+//	  .user_irq(user_irq),
+	  .active(active),
+	  );
+   
 endmodule	// user_project_wrapper
 
 `default_nettype wire

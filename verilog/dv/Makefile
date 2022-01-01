@@ -21,6 +21,9 @@
 
 PATTERNS = io_ports la_test1 la_test2 wb_port mprj_stimulus
 
+no_tests:
+	echo "no tests"
+
 all:  ${PATTERNS}
 	for i in ${PATTERNS}; do \
 		( cd $$i && make -f Makefile $${i}.vcd &> verify.log && grep Monitor verify.log) ; \
@@ -35,5 +38,5 @@ clean:  ${PATTERNS}
 		( cd $$i && make clean ) ; \
 	done
 	rm -rf *.log
-	
+
 .PHONY: clean all
