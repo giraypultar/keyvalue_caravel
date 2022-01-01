@@ -24,7 +24,7 @@ source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_
 
 set script_dir [file dirname [file normalize [info script]]]
 
-set ::env(DESIGN_NAME) both
+set ::env(DESIGN_NAME) user_project_wrapper
 #section end
 
 # User Configurations
@@ -32,9 +32,7 @@ set ::env(DESIGN_NAME) both
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/src/both.v \
-	$script_dir/../../verilog/rtl/src/keyvalue_3.v \
-	$script_dir/../../verilog/rtl/src/keyvalue_4.v"
+	$script_dir/../../verilog/rtl/user_project_wrapper.v"
 
 ## Clock configurations
 set ::env(CLOCK_PORT) "user_clock2"
